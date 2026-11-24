@@ -6,7 +6,7 @@
 
 int main()
 {
-    std::cout << "=== 1. Subject test (virtual) ===" << std::endl;
+    std::cout << "=== 1. Virtual ===" << std::endl;
     {
         const Animal* meta = new Animal();
         const Animal* j = new Dog();
@@ -23,7 +23,7 @@ int main()
         delete i;
     }
 
-    std::cout << std::endl << "=== 2. Wrong classes (non-virtual) ===" << std::endl;
+    std::cout << std::endl << "=== Non virtual ===" << std::endl;
     {
         const WrongAnimal* w = new WrongCat();
         std::cout << w->getType() << " " << std::endl;
@@ -35,7 +35,7 @@ int main()
         delete w;
     }
 
-    std::cout << std::endl << "=== 3. Direct use, copy, assignment ===" << std::endl;
+    std::cout << std::endl << "=== Direct use, copy, assignment ===" << std::endl;
     {
         Dog d;
         Cat c;
