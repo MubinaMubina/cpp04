@@ -3,14 +3,11 @@
 WrongAnimal::WrongAnimal()
 {
     std::cout << "WrongAnimal default constructor called" << std::endl;
-    // PSEUDOCODE: type <- ""
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal& other)
+WrongAnimal::WrongAnimal(const WrongAnimal& other) : type(other.type)
 {
     std::cout << "WrongAnimal copy constructor called" << std::endl;
-    // PSEUDOCODE: type <- other.type
-    (void)other;
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
@@ -18,7 +15,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
     std::cout << "WrongAnimal copy assignment operator called" << std::endl;
     if (this != &other)
     {
-        // PSEUDOCODE: type <- other.type
+        type = other.type;
     }
     return *this;
 }
@@ -35,5 +32,5 @@ std::string WrongAnimal::getType() const
 
 void WrongAnimal::makeSound() const
 {
-    // PSEUDOCODE: print a generic sound (this is the one WrongCat will wrongly reuse)
+    std::cout << "WrongAnimal generic sound" << std::endl;
 }

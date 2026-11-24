@@ -13,7 +13,7 @@ class WrongCat : public WrongAnimal
         WrongCat& operator=(const WrongCat& other);
         ~WrongCat();
 
-        void makeSound() const; // hides the base one (base is not virtual)
+        void makeSound() const;
 };
 
 #endif

@@ -6,28 +6,48 @@
 
 int main()
 {
-    // PSEUDOCODE
-    // 1. Subject test
-    //      const Animal* meta <- new Animal()
-    //      const Animal* j    <- new Dog()
-    //      const Animal* i    <- new Cat()
-    //      print j->getType(), i->getType()
-    //      i->makeSound()  -> Cat sound   (needs virtual makeSound)
-    //      j->makeSound()  -> Dog sound
-    //      meta->makeSound() -> generic sound
-    //      delete meta, j, i
-    //
-    // 2. Same thing with the Wrong classes
-    //      const WrongAnimal* w <- new WrongCat()
-    //      w->makeSound()  -> prints the WrongAnimal sound (NOT the cat's):
-    //                         the non-virtual call is bound at compile time
-    //      WrongCat directly (WrongCat c; c.makeSound()) -> the cat sound
-    //      delete w
-    //
-    // 3. Extra tests
-    //      - Dog and Cat used directly (Dog d; d.makeSound())
-    //      - copy constructor and operator= on Dog/Cat (check type + messages)
-    //      - read the constructor/destructor messages: base is built first,
-    //        destroyed last
+    std::cout << "=== 1. Subject test (virtual) ===" << std::endl;
+    {
+        const Animal* meta = new Animal();
+        const Animal* j = new Dog();
+        const Animal* i = new Cat();
+
+        std::cout << j->getType() << " " << std::endl;
+        std::cout << i->getType() << " " << std::endl;
+        i->makeSound();
+        j->makeSound();
+        meta->makeSound();
+
+        delete meta;
+        delete j;
+        delete i;
+    }
+
+    std::cout << std::endl << "=== 2. Wrong classes (non-virtual) ===" << std::endl;
+    {
+        const WrongAnimal* w = new WrongCat();
+        std::cout << w->getType() << " " << std::endl;
+        w->makeSound();
+
+        const WrongCat c;
+        c.makeSound();
+
+        delete w;
+    }
+
+    std::cout << std::endl << "=== 3. Direct use, copy, assignment ===" << std::endl;
+    {
+        Dog d;
+        Cat c;
+        d.makeSound();
+        c.makeSound();
+
+        Dog d2(d);
+        Cat c2;
+        c2 = c;
+        std::cout << d2.getType() << " " << c2.getType() << std::endl;
+        d2.makeSound();
+        c2.makeSound();
+    }
     return 0;
 }

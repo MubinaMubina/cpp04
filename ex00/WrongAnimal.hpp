@@ -4,12 +4,6 @@
 # include <iostream>
 # include <string>
 
-// ---------------------------------------------------------------------------
-// WrongAnimal: same as Animal, but makeSound() is NOT virtual.
-// A WrongCat seen through a WrongAnimal* will therefore use the
-// WrongAnimal sound: the compiler picks the function from the POINTER type.
-// It exists only to prove that `virtual` is what makes polymorphism work.
-// ---------------------------------------------------------------------------
 class WrongAnimal
 {
     public:
@@ -18,7 +12,7 @@ class WrongAnimal
         WrongAnimal& operator=(const WrongAnimal& other);
         virtual ~WrongAnimal();
 
-        void        makeSound() const; // stays NON-virtual on purpose (static binding)
+        void        makeSound() const;
         std::string getType() const;
 
     protected:
